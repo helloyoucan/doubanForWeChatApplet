@@ -1,0 +1,28 @@
+{
+  "pages":[
+    "pages/movie/movie",
+    "pages/music/music",
+    "pages/book/book"
+
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#1ABC9C",
+    "navigationBarTitleText": "小豆瓣",
+    "navigationBarTextStyle":"#fff"
+  },
+  "tabBar":{
+"list":[{
+    "pagePath": "pages/movie/movie",
+    "text": "电影"
+  },
+  {
+    "pagePath": "pages/music/music",
+    "text": "音乐"
+  },
+  {
+    "pagePath": "pages/book/book",
+    "text": "图书"
+  }]
+  }
+}

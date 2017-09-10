@@ -1,0 +1,50 @@
+
+      <view id='movie'>
+      <view class='movie-search'>
+      <input confirm-type="search" bindinput="bindKeyInput" bindconfirm='search'  placeholder="搜索豆瓣电影"/>
+     <icon bindtap="search" type="search" size="27" color="#999"/>
+      </view>
+      <view class='select'>
+        <ul>
+          <li wx:if="{{active == 'hot'}}" ><span class='select-item active'>正在热映</span></li>
+          <li wx:if="{{active != 'hot'}}"  bindtap='getHot'><span class='select-item'>正在热映</span></li>
+
+          <li wx:if="{{active == 'now'}}"><span class='select-item active'>即将上映</span></li>
+          <li wx:if="{{active != 'now'}}" bindtap='getNow'><span class='select-item'>即将上映</span></li>
+
+          <li wx:if="{{active == 'top'}}"><span class='select-item active'>Top250</span></li>
+          <li wx:if="{{active != 'top'}}" bindtap='getTop'><span class='select-item'>Top250</span></li>
+        </ul>
+      </view>
+       <scroll-view  class='movie-content' scroll-y lower-threshold='50' bindscrolltolower='getMoreData'>
+        <block wx:for="{{movies}}" wx:key="m.id" wx:for-item="m">
+        <view class='movie-item'>
+          <view class='movie-img'>
+            <image src="{{m.images.small}}"/>
+          </view>
+         <view class='movie-msg'>
+          <view class='m-title'>{{m.title}}({{m.year}})
+          <!-- <a href="{{m.alt}}" target='_blank'>详细</a> -->
+          </view>
+          <view>看过人数 : {{m.collect_count}}</view>
+          <view>评分:{{m.rating.average}}</view>
+          <view>分类:
+            <block wx:for="{{m.genres}}" wx:key="g" wx:for-item="g">
+              <span>{{g}}</span>
+            </block>
+          </view>
+          <view>主演:
+            <block wx:for="{{m.casts}}" wx:key="c.name" wx:for-item="c">
+              <span>{{c.name}}</span>
+            </block>
+          </view>
+          <view>导演:
+            <block wx:for="{{m.directors}}" wx:key="d.name" wx:for-item="d">
+              <span>{{d.name}}</span>
+            </block>
+          </view>
+        </view>
+        </view>
+        </block>
+       </scroll-view>
+      </view>
